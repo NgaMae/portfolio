@@ -25,7 +25,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed w-full h-20 shadow-gray-900 shadow-2xs left-0 top-0 px-5 lg:px-28 content-center select-none">
+      <header className="fixed w-full h-20 shadow-gray-900 shadow-2xs left-0 top-0 px-5 lg:px-28 content-center select-none mt-2">
         <div className="text-text flex justify-between box-content">
           <Link href="#home" className="content-center">
             <div className="text-xl text-highlight">San Min Aung</div>
