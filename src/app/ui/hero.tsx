@@ -19,7 +19,7 @@ const Hero = () => {
         <p className="font-bold text-3xl text-gray-400 mb-3">
           Fullstack Developer
         </p>
-        <div className="space-x-5">
+        <div className="space-x-5 select-none">
           <button
             tabIndex={0}
             className="border-2 rounded-2xl p-2 hover:bg-secondary hover:text-primary hover:border-2 hover:border-secondary"
