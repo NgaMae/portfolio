@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <>
       <header className="fixed w-full h-20 shadow-gray-800 shadow-xs left-0 top-0 px-5 content-center select-none bg-inherit lg:px-28">
-        <div className="text-text flex justify-between box-content">
+        <div className="flex justify-between box-content">
           <Link href="/" className="content-center">
             <div className="text-lg">San Min Aung</div>
           </Link>
