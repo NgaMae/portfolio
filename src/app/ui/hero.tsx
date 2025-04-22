@@ -3,7 +3,10 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <div className="mt-20 h-[80vh] flex flex-col lg:flex-row justify-center lg:space-x-10">
+    <div
+      className="mt-20 h-[80vh] flex flex-col lg:flex-row justify-center lg:space-x-10"
+      id="home"
+    >
       <div className="content-center self-center">
         <Image
           alt="profile"
