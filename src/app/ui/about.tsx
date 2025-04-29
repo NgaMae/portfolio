@@ -5,15 +5,15 @@ import { AcademicCapIcon } from "@heroicons/react/24/solid";
 
 const About = () => {
   return (
-    <div className="mt-24 h-[80vh]" id="about">
+    <div className="mt-24" id="about">
       <p className="text-center text-gray-500">Get To Know More</p>
       <h1 className="text-center text-5xl">About Me</h1>
       <div className="m-4 md:m-16 grid grid-cols-1 md:grid-cols-2 justify-items-center">
         <Image
           src="/profile.jpg"
           alt="profile"
-          width={300}
-          height={300}
+          width={250}
+          height={250}
           className="rounded-2xl hidden md:block"
         />
         <div className="text-center md:grid md:grid-rows-2 gap-4">
