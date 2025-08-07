@@ -4,7 +4,7 @@ import Image from "next/image";
 const Hero = () => {
   return (
     <div
-      className="mt-20 h-[80vh] flex flex-col lg:flex-row justify-center lg:space-x-10"
+      className="pt-20 h-[100vh] flex flex-col lg:flex-row justify-center lg:space-x-10"
       id="home"
     >
       <div className="content-center self-center">
@@ -23,18 +23,22 @@ const Hero = () => {
           Fullstack Developer
         </p>
         <div className="space-x-5 select-none">
-          <button
-            tabIndex={0}
-            className="border-2 rounded-2xl p-2 hover:bg-secondary hover:text-primary hover:border-2 hover:border-secondary"
-          >
-            Download CV
-          </button>
-          <button
-            tabIndex={0}
-            className="rounded-2xl p-2 bg-secondary text-primary font-bold border-2 border-secondary hover:bg-primary hover:text-secondary hover:border-secondary hover:border-2"
-          >
-            Contact Info
-          </button>
+          <a href="/San-Min-Aung-Resume.pdf" download>
+            <button
+              tabIndex={0}
+              className="border-2 rounded-2xl p-2 hover:bg-secondary hover:text-primary hover:border-2 hover:border-secondary"
+            >
+              Download CV
+            </button>
+          </a>
+          <a href="#contact">
+            <button
+              tabIndex={0}
+              className="rounded-2xl p-2 bg-secondary text-primary font-bold border-2 border-secondary hover:bg-primary hover:text-secondary hover:border-secondary hover:border-2"
+            >
+              Contact Info
+            </button>
+          </a>
         </div>
       </div>
     </div>

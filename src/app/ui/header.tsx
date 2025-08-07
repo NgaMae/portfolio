@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogBackdrop,
@@ -22,10 +22,41 @@ const list = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("home");
+
+  // Observe section visibility
+  useEffect(() => {
+    const sectionIds = list.map((item) => item.href.replace("#", ""));
+    const sectionElements = sectionIds.map((id) => document.getElementById(id));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-40% 0px -40% 0px", // triggers when ~middle of viewport
+        threshold: 0.1,
+      }
+    );
+
+    sectionElements.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      sectionElements.forEach((el) => {
+        if (el) observer.unobserve(el);
+      });
+    };
+  }, []);
 
   return (
     <>
-      <header className="fixed w-full h-20 shadow-gray-800 shadow-xs left-0 top-0 px-5 content-center select-none bg-inherit lg:px-28">
+      <header className="fixed w-full h-20 shadow-gray-800 shadow-xs left-0 top-0 px-5 content-center select-none bg-inherit lg:px-28 z-50">
         <div className="flex justify-between box-content">
           <Link href="/" className="content-center">
             <div className="text-lg">San Min Aung</div>
@@ -40,26 +71,24 @@ export default function Header() {
             <Bars3Icon className="size-6" />
           </button>
           <ul className="hidden lg:flex space-x-7 text-lg">
-            {list.map((list) => {
-              return (
-                <Link
-                  href={list.href}
-                  key={list.name}
-                  className="content-center"
+            {list.map((item) => (
+              <Link href={item.href} key={item.name} className="content-center">
+                <li
+                  className={`content-center border-b-2 py-2 transition-all duration-300 ${
+                    activeSection === item.href.replace("#", "")
+                      ? "border-highlight font-semibold text-highlight"
+                      : "border-transparent hover:border-highlight"
+                  }`}
                 >
-                  <li
-                    key={list.name}
-                    tabIndex={-1}
-                    className="content-center border-b-2 border-transparent hover:border-highlight focus:border-highlight py-2"
-                  >
-                    {list.name}
-                  </li>
-                </Link>
-              );
-            })}
+                  {item.name}
+                </li>
+              </Link>
+            ))}
           </ul>
         </div>
       </header>
+
+      {/* Mobile Menu (Dialog) */}
       <Dialog open={open} onClose={setOpen} className="relative z-10 lg:hidden">
         <DialogBackdrop
           transition
@@ -86,6 +115,7 @@ export default function Header() {
                     </button>
                   </div>
                 </TransitionChild>
+
                 <div className="flex h-full flex-col overflow-y-scroll bg-secondary py-6 shadow-xl w-[50vw]">
                   <div className="px-4 sm:px-6">
                     <DialogTitle className="text-base font-semibold text-gray-900">
@@ -94,23 +124,24 @@ export default function Header() {
                   </div>
                   <div className="relative mt-6 flex-1">
                     <ul className="text-black text-lg">
-                      {list.map((list) => {
-                        return (
-                          <Link
-                            href={list.href}
-                            key={list.name}
-                            className="content-center"
+                      {list.map((item) => (
+                        <Link
+                          href={item.href}
+                          key={item.name}
+                          className="content-center"
+                          onClick={() => setOpen(false)} // Close menu on click
+                        >
+                          <li
+                            className={`content-center border-b-2 w-fit mx-4 py-2 transition-all duration-300 ${
+                              activeSection === item.href.replace("#", "")
+                                ? "border-highlight font-semibold text-highlight"
+                                : "border-transparent hover:border-highlight"
+                            }`}
                           >
-                            <li
-                              key={list.name}
-                              tabIndex={-1}
-                              className="content-center border-b-2 border-transparent w-fit hover:border-highlight focus:border-highlight mx-4 py-2"
-                            >
-                              {list.name}
-                            </li>
-                          </Link>
-                        );
-                      })}
+                            {item.name}
+                          </li>
+                        </Link>
+                      ))}
                     </ul>
                   </div>
                 </div>
