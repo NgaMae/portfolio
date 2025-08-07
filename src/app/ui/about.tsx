@@ -56,10 +56,10 @@ const About = () => {
           {/* About Text */}
           <div className="space-y-4 text-justify text-gray-300">
             <p>
-              I'm a passionate web developer currently completing my B.C.Sc. at
-              the University of Computer Studies, Pyay. I specialize in building
-              full-stack applications using modern technologies such as Laravel,
-              React, Next.js, TailwindCSS, and MySQL/MongoDB.
+              I&apos;m a passionate web developer currently completing my
+              B.C.Sc. at the University of Computer Studies, Pyay. I specialize
+              in building full-stack applications using modern technologies such
+              as Laravel, React, Next.js, TailwindCSS, and MySQL/MongoDB.
             </p>
             <p>
               I consider myself a fast learner with strong problem-solving
