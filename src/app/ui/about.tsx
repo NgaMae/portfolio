@@ -33,7 +33,7 @@ const About = () => {
                 3 months internship
               </p>
               <p className="text-sm text-gray-500 text-center">
-                at RIIT Company
+                at RI IT Company
               </p>
               <p className="text-sm text-gray-500 text-center">
                 Developer position
